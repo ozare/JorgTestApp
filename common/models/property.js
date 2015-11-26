@@ -1,12 +1,13 @@
 module.exports = function (Property) {
+    /**
+     * Test function to checl status of the property/shop
+     * @param cb
+     */
     Property.status = function (cb) {
         var currentDate = new Date();
         var currentHour = currentDate.getHours();
         var OPEN_HOUR   = 6;
         var CLOSE_HOUR  = 20;
-
-        console.log('Current hour is ' + currentHour);
-
         var response;
 
         if (currentHour > OPEN_HOUR && currentHour < CLOSE_HOUR) {
@@ -17,6 +18,9 @@ module.exports = function (Property) {
         cb(null, response);
     };
 
+    /**
+     * Make method available
+     */
     Property.remoteMethod(
         'status',
         {
