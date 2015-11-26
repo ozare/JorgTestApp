@@ -14,7 +14,7 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
   },
   "AccessToken": {
     "dataSource": "db",
@@ -31,5 +31,17 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "property": {
+    "dataSource": "mydb",
+    "public": true
+  },
+  "period": {
+    "dataSource": "mydb",
+    "public": true
+  },
+  "booking": {
+    "dataSource": "mydb",
+    "public": true
   }
 }

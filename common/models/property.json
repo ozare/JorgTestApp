@@ -1,0 +1,77 @@
+{
+  "name": "property",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "mixins": {
+    "TimeStamp": {
+      "required": false
+    }
+  },
+  "properties": {
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "postcode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "province": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "archived_at": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "periods": {
+      "type": "hasMany",
+      "model": "period",
+      "foreignKey": ""
+    },
+    "bookings": {
+      "type": "hasMany",
+      "model": "booking",
+      "foreignKey": ""
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "franchiser",
+      "permission": "ALLOW",
+      "property": "find"
+    }
+  ],
+  "methods": {}
+}

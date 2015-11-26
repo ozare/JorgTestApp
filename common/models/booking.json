@@ -1,0 +1,119 @@
+{
+  "name": "booking",
+  "plural": "bookings",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "mixins": {
+    "TimeStamp": {
+      "required": false
+    }
+  },
+  "properties": {
+    "start": {
+      "type": "date",
+      "required": true
+    },
+    "end": {
+      "type": "date",
+      "required": true
+    },
+    "thread_id": {
+      "type": "string"
+    },
+    "payout": {
+      "type": "number",
+      "postgresql": {
+        "dataType": "decimal"
+      }
+    },
+    "channel": {
+      "type": "string"
+    },
+    "number_of_guests": {
+      "type": "number"
+    },
+    "comments": {
+      "type": "string"
+    },
+    "guest_name": {
+      "type": "string"
+    },
+    "guest_phone": {
+      "type": "string"
+    },
+    "guest_email": {
+      "type": "string"
+    },
+    "cleaning": {
+      "type": "date"
+    },
+    "checked_in": {
+      "type": "boolean"
+    },
+    "cleaned": {
+      "type": "boolean"
+    },
+    "arrival_time_changed": {
+      "type": "boolean"
+    },
+    "host": {
+      "type": "string"
+    },
+    "service_costs": {
+      "type": "number",
+      "postgresql": {
+        "dataType": "decimal"
+      }
+    },
+    "service_costs_vat": {
+      "type": "number",
+      "postgresql": {
+        "dataType": "decimal"
+      }
+    },
+    "cleaning_costs": {
+      "type": "number",
+      "postgresql": {
+        "dataType": "decimal"
+      }
+    },
+    "cleaning_costs_vat": {
+      "type": "number",
+      "postgresql": {
+        "dataType": "decimal"
+      }
+    },
+    "cancelled_at": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "property": {
+      "type": "belongsTo",
+      "model": "property",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "franchiser",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

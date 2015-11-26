@@ -1,0 +1,61 @@
+{
+  "name": "period",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "mixins": {
+    "TimeStamp": {
+      "required": false
+    }
+  },
+  "properties": {
+    "start": {
+      "type": "date",
+      "required": true
+    },
+    "end": {
+      "type": "date",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "notes": {
+      "type": "string",
+      "required": false
+    },
+    "precleaning": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "property": {
+      "type": "belongsTo",
+      "model": "property",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "franchiser",
+      "permission": "ALLOW",
+      "property": "find"
+    }
+  ],
+  "methods": {}
+}
