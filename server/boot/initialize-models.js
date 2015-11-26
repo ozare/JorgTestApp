@@ -1,25 +1,37 @@
-module.exports = function(app) {
-    /**
-     * This script autocreates some of the data needed to test out the application
-     */
-    app.datasources.mydb.automigrate('property', function(err) {
+/**
+ * This script auto-creates some of the data needed to test out the application
+ * @param app
+ */
+module.exports = function (app) {
+    app.datasources.mydb.automigrate('property', function (err) {
         if (err) throw err;
 
         /**
          * Create houses
          * @type {*[]}
          */
+
         var properties = [
             {
-                address: 'john.doe@ibm.com'
+                address    : "High str.",
+                postcode   : "asdad",
+                city       : "New York",
+                province   : "NY",
+                country    : "USA",
+                archived_at: new Date()
             },
             {
-                address: 'jane.doe@ibm.com'
+                address    : "Low str.",
+                postcode   : "adsas",
+                city       : "New York",
+                province   : "NY",
+                country    : "USA",
+                archived_at: new Date()
             }
         ];
 
-        properties.forEach(function(property) {
-            app.models.Property.create(property, function(err, model) {
+        properties.forEach(function (property) {
+            app.models.Property.create(property, function (err, model) {
                 if (err) throw err;
 
                 console.log('Created:', model);
